@@ -79,8 +79,9 @@ var SmartBanner = function (options) {
 	var runningStandAlone = navigator.standalone;
 	var userDismissed = cookie.get('smartbanner-closed');
 	var userInstalled = cookie.get('smartbanner-installed');
+	var checkAndroidVersion = !(agent.os.version && (agent.os.version.split(".")[0] > 4 || (agent.os.version.split(".")[0] == 4 && agent.os.version.split(".")[1] && agent.os.version.split(".")[1] >= 4)));
 
-	if (unsupported || isMobileSafari || runningStandAlone || userDismissed || userInstalled) {
+	if (unsupported || isMobileSafari || runningStandAlone || userDismissed || userInstalled || checkAndroidVersion) {
 		return;
 	}
 
